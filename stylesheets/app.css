@@ -1,30 +1,95 @@
-/* Foundation v2.2 http://foundation.zurb.com */
-/* Artfully masterminded by ZURB  */
+@font-face {
+    font-family: coolvetica;
+    src: url(../assets/coolvetica.ttf);
+}
 
-/* -------------------------------------------------- 
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
+/*	common	*/
+h2	{
+	background: url('../images/subline.png') repeat-x;
+	text-align: center;
+	text-shadow: 0 1px 1px white;
+	font-size: 18px;
+	color: #8e8e8e;
+}
 
-
-/* -----------------------------------------
-   Shared Styles
------------------------------------------ */
-
-
-
-/* -----------------------------------------
-   Page Name 1
------------------------------------------ */
+h2 span 	{
+	padding:0px 10px;
+	background-color: #ebeced;
+}
 
 
+/*	Main Nav */
+.main-nav	{
+	background: url('../images/main-nav-bg.png') repeat-x;
+	height: 59px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0px;
+	z-index: 3;
+}
 
+.main-nav a	{
+	color: #9b9b9b;
+	text-shadow: 0px 1px 0px #e1e1e8;
+	font-size: 1.8em;
+	letter-spacing: 1px;
+	font-family: coolvetica, helvetica, arial;
+	margin: 10px;
+	text-decoration: none;
+}
 
-/* -----------------------------------------
-   Page Name 2
------------------------------------------ */
+.main-nav a:hover	{
+	color: #000;
+	text-shadow: 0px -1px 0px #668337;
+}
 
+.main-nav-active	{
+	color: #00a9e8 !important;
+}
 
+/*	Logo	*/
+.dizuna-logo	{
+	background: url('../images/dizuna-logo.png') no-repeat top center;
+	height: 101px;
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+/*	Client Testimonials	*/
+#client-testimonials div	{
+	background: url('../images/testimonial-quote.png') no-repeat;
+	padding:5px 30px;
+}
+
+.testimonial-controller	{
+	width: 100%;
+	text-align: right;
+}
+
+.testimonial-controller a {
+	color: #000;
+	font-size: .7em;
+	padding: 3px 5px;
+	text-decoration: none;
+	background-color: #FFF;
+	border: 1px solid #b4b4b4;
+	border-radius: 10px;
+}
+
+.testimonial-controller a:hover	{
+	border: 1px solid #a8a9a9;
+}
+.testimonial-link-active	{
+	background: #a8a9a9 !important;
+	border: 1px solid #333;
+	color: #FFF !important;
+}
+
+/* Our Team	*/
+.our-team img {
+	border: 1px solid #FFF;
+	margin: 5px;
+	border-radius: 10px;
+}

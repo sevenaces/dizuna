@@ -11,12 +11,42 @@
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width" />
 
-	<title>Welcome to Foundation</title>
+	<title>Dizuna</title>
   
 	<!-- Included CSS Files -->
 	<link rel="stylesheet" href="stylesheets/foundation.css">
 	<link rel="stylesheet" href="stylesheets/app.css">
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+	<script src="javascripts/jquery.bxSlider.min.js"></script>
 
+	<script type="text/javascript">
+	  $(document).ready(function(){
+	  	$('.full-page').css('min-height', (window.screen.availHeight) + "px");
+
+	  	var testimonialSlider = $('#client-testimonials').bxSlider({controls: false, auto: true});
+		$('.testimonial-controller a').click(function(){
+			var cIndex = $('.testimonial-controller a').index(this)
+			testimonialSlider.goToSlide(cIndex);
+			$('.testimonial-controller a').removeClass('testimonial-link-active');
+			$(this).addClass('testimonial-link-active');
+			return false;
+		});
+
+		$('.testimonial-controller a:first').addClass('testimonial-link-active');
+
+		$('#pagePeel').pagePeel({});
+	  });
+
+	  function scroll(scrollToId)	{
+			var p = $("#" + scrollToId);
+			scrollTo = p.position().top;
+			$('html,body').animate({scrollTop: scrollTo}, 600);	
+		}
+	</script>
+	
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="stylesheets/ie.css">
 	<![endif]-->
@@ -29,122 +59,132 @@
 
 </head>
 <body>
-
-	<!-- container -->
-	<div class="container">
-
-		<div class="row">
-			<div class="twelve columns">
-				<h2>Welcome to Foundation</h2>
-				<p>This is version 2.2 released on February 21, 2012</p>
-				<hr />
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="eight columns">
-				<h3>The Grid</h3>
-
-				<!-- Grid Example -->
-				<div class="row">
-					<div class="twelve columns">
-						<div class="panel">
-							<p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="six columns">
-						<div class="panel">
-							<p>Six columns</p>
-						</div>
-					</div>
-					<div class="six columns">
-						<div class="panel">
-							<p>Six columns</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="four columns">
-						<div class="panel">
-							<p>Four columns</p>
-						</div>
-					</div>
-					<div class="four columns">
-						<div class="panel">
-							<p>Four columns</p>
-						</div>
-					</div>
-					<div class="four columns">
-						<div class="panel">
-							<p>Four columns</p>
-						</div>
-					</div>
-				</div>
-
-				<h3>Tabs</h3>
-				<dl class="tabs">
-					<dd><a href="#simple1" class="active">Simple Tab 1</a></dd>
-					<dd><a href="#simple2">Simple Tab 2</a></dd>
-					<dd><a href="#simple3">Simple Tab 3</a></dd>
-				</dl>
-
-				<ul class="tabs-content">
-					<li class="active" id="simple1Tab">This is simple tab 1's content. Pretty neat, huh?</li>
-					<li id="simple2Tab">This is simple tab 2's content. Now you see it!</li>
-					<li id="simple3Tab">This is simple tab 3's content. It's, you know...okay.</li>
-				</ul>
-
-				<h3>Buttons</h3>
-				
-				<div class="row">
-					<div class="six columns">
-						<p><a href="#" class="small blue button">Small Blue Button</a></p>
-						<p><a href="#" class="blue button">Medium Blue Button</a></p>
-						<p><a href="#" class="large blue button">Large Blue Button</a></p>
-		
-						<p><a href="#" class="nice radius small blue button">Nice Blue Button</a></p>
-						<p><a href="#" class="nice radius blue button">Nice Blue Button</a></p>
-						<p><a href="#" class="nice radius large blue button">Nice Blue Button</a></p>
-					</div>
-					<div class="six columns">
-						<p><a href="#" class="small red button">Small Red Button</a></p>
-						<p><a href="#" class="green button">Medium Green Button</a></p>
-						<p><a href="#" class="large white button">Large White Button</a></p>
-		
-						<p><a href="#" class="nice radius small red button">Nice Red Button</a></p>
-						<p><a href="#" class="nice radius green button">Nice Green Button</a></p>
-						<p><a href="#" class="nice radius large white button">Nice White Button</a></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="four columns">			
-				<h4>Getting Started</h4>
-				<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-
-				<h4>Other Resources</h4>
-				<p>Once you've exhausted the fun in this document, you should check out:</p>
-				<ul class="disc">
-					<li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
-					<li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
-					<li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
-				</ul>
-			</div>
-		</div>
-
+	<div class="pagepeel"></div>
+	<div class="container main-nav">
+		<a href="#home" onclick="scroll('home')">home</a> 
+		<a href="#about-us" onclick="scroll('about-us')">about us</a> 
+		<a href="#services" onclick="scroll('services')">services</a> 
+		<a href="#work" onclick="scroll('work')">work</a> 
+		<a href="#careers" onclick="scroll('careers')">careers</a>
 	</div>
-	<!-- container -->
+
+	<!-- HOME CONTENT -->
+	<a name="home"></a>
+	<div class="container full-page" id="home">
+		<div class="row centered">
+			<div class="twelve columns dizuna-logo"></div>
+		</div>
+		<div class="row centered">
+			<div class="twelve columns"><h2><span>Welcome to Dizuna</span></h2></div>
+		</div>
+
+		<div class="row">
+			<div class="four columns">
+				<h3>hello</h3>
+				<p>Hi! At Dizuna, we belive in communicating, whether it&rsquo;s your Public Relations need or you plan on going social.</p>
+			</div>
+			<div class="four columns">
+				<h3>contact</h3>
+				<p>You can <a href="mailto:shakun@dizuna.com">email</a> us at any time or fill out this form and we’ll get back to you as soon as possible.</p>
+			</div>
+			<div class="four columns">
+				<h3>request a quote</h3>
+				<p>You can use this <a href="">form to request a quote</a> for your project. Just fill out the basic details, and we’ll tailor out a perfect solution for you.</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="four columns">
+				<h3>about us</h3>
+				<p>We are a Jammu based company working. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis, tellus id euismod tincidunt, lacus erat convallis enim, a porta magna neque eu lorem. Nullam cursus semper est, vel porta leo commodo id.</p>
+			</div>
+			<div class="eight columns">
+			</div>
+		</div>
+	</div>	
+	<!-- HOME CONTENT ENDS -->
+	
+	<!-- ABOUT US CONTENT -->
+	<a name="about-us"></a>
+	<div class="container full-page" id="about-us">
+		<div class="row centered">
+			<div class="twelve columns dizuna-logo"></div>
+		</div>
+		<div class="row centered">
+			<div class="twelve columns"><h2><span>About Us</span></h2></div>
+		</div>
+		<div class="row">
+			<div class="four columns">
+				<h3>why Dizuna?</h3>
+				<p>In ut odio vitae massa gravida rutrum. Phasellus ut est vitae nunc vestibulum dignissim. In egestas faucibus leo, ut malesuada diam feugiat porttitor. Phasellus eget eros eget.</p>
+			</div>
+			<div class="eight columns">
+				<h3>client testimonials</h3>
+				<div id="client-testimonials">
+				  	<div>
+				  		<p>1In accumsan, purus gravida ullamcorper auctor, massa lorem pretium velit, id sollicitudin libero velit non magna. Donec vitae diam at erat interdum fermentum vel sit amet tellus.</p>
+				  		<p align="center">- Client Name</p>
+				  	</div>
+					<div>
+				  		<p>2In accumsan, purus gravida ullamcorper auctor, massa lorem pretium velit, id sollicitudin libero velit non magna. Donec vitae diam at erat interdum fermentum vel sit amet tellus.</p>
+				  		<p align="center">- Client Name</p>
+				  	</div>
+					<div>
+				  		<p>3In accumsan, purus gravida ullamcorper auctor, massa lorem pretium velit, id sollicitudin libero velit non magna. Donec vitae diam at erat interdum fermentum vel sit amet tellus.</p>
+				  		<p align="center">- Client Name</p>
+				  	</div>
+				  	<div>
+				  		<p>4In accumsan, purus gravida ullamcorper auctor, massa lorem pretium velit, id sollicitudin libero velit non magna. Donec vitae diam at erat interdum fermentum vel sit amet tellus.</p>
+				  		<p align="center">- Client Name</p>
+				  	</div>
+				</div>
+				<div class="testimonial-controller">
+				  <a href="">1</a>
+				  <a href="">2</a>
+				  <a href="">3</a>
+				  <a href="">4</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="four columns our-team">
+				<h3>our team</h3>
+				<img src="./images/team/shaakun.jpg" class="has-tip" title="<h4>Shakun Sethi</h4> has over 3 years of experience in Social Media and PR. She has learnt the trade from working with Edelman PR, the world’s largest PR agency in the capacity of social media manager. Shakun has been involved in managing Social media Initiatives for clients like: RIM BlackBerry, Chevrolet India, Wrigley, LinkedIn, FDCI, UTStarcom" />
+				<img src="./images/team/shaakun2.jpg" class="has-tip" title="<h4>Shakun Sethi</h4> has over 3 years of experience in Social Media and PR. She has learnt the trade from working with Edelman PR, the world’s largest PR agency in the capacity of social media manager. Shakun has been involved in managing Social media Initiatives for clients like: RIM BlackBerry, Chevrolet India, Wrigley, LinkedIn, FDCI, UTStarcom"  />
+			</div>
+		</div>
+	</div>	
+	<!-- ABOUT US CONTENT ENDS -->
+
+	<a name="services"></a>
+	<div class="container full-page" id="services">
+	<div class="row centered">
+			<div class="twelve columns dizuna-logo"></div>
+		</div>
+		<div class="row centered">
+			<div class="twelve columns"><h2><span>Services</span></h2></div>
+		</div>
+	</div>
 
 
+	<a name="work"></a>
+	<div class="container full-page" id="work"><div class="row centered">
+			<div class="twelve columns dizuna-logo"></div>
+		</div>
+		<div class="row centered">
+			<div class="twelve columns"><h2><span>Work</span></h2></div>
+		</div>
+	</div>
 
 
-	<!-- Included JS Files -->
-	<script src="javascripts/jquery.min.js"></script>
-	<script src="javascripts/modernizr.foundation.js"></script>
-	<script src="javascripts/foundation.js"></script>
-	<script src="javascripts/app.js"></script>
-
+	<a name="careers"></a>
+	<div class="container full-page" id="careers">
+		<div class="row centered">
+			<div class="twelve columns dizuna-logo"></div>
+		</div>
+		<div class="row centered">
+			<div class="twelve columns"><h2><span>Careers</span></h2></div>
+		</div>
+	</div>
 </body>
 </html>
