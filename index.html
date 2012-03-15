@@ -23,28 +23,60 @@
 	<script src="javascripts/jquery.bxSlider.min.js"></script>
 
 	<script type="text/javascript">
+		function setNavColors(index)
+		{
+			$('.main-nav a').removeClass('main-nav-active');
+			$('.main-nav a:nth-child(0n+' + index + ')').addClass('main-nav-active');
+		}
+
+		function scroll(scrollToId, index)	{
+			var p = $("#" + scrollToId);
+			scrollTo = p.position().top;
+			$('html,body').animate({scrollTop: scrollTo}, 600);	
+			setNavColors(index);
+		}
+
+		
+
 	  $(document).ready(function(){
 	  	$('.full-page').css('min-height', (window.screen.availHeight) + "px");
 
-	  	var testimonialSlider = $('#client-testimonials').bxSlider({controls: false, auto: true});
+	  	var testimonialSlider = $('#client-testimonials').bxSlider(
+	  		{
+	  			controls: false,
+	  			auto: true,
+	  			onBeforeSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject)
+	  			{
+	  				$('.testimonial-controller a').removeClass('testimonial-link-active');
+					$('.testimonial-controller a:nth-child(0n+' + (currentSlideNumber+1) + ')').addClass('testimonial-link-active');
+	  			}
+	  	});
 		$('.testimonial-controller a').click(function(){
 			var cIndex = $('.testimonial-controller a').index(this)
 			testimonialSlider.goToSlide(cIndex);
+			testimonialSlider.startShow();
 			$('.testimonial-controller a').removeClass('testimonial-link-active');
 			$(this).addClass('testimonial-link-active');
 			return false;
 		});
 
 		$('.testimonial-controller a:first').addClass('testimonial-link-active');
+		$('.main-nav a:first').addClass('main-nav-active');
 
-		$('#pagePeel').pagePeel({});
+		var heights = new Array();
+		heights[0] = $('#home').height();
+		heights[1] = heights[0] + $('#about-us').height();
+		heights[2] = heights[1] + $('#services').height();
+		heights[3] = heights[2] + $('#work').height();
+		heights[4] = heights[3] + $('#careers').height();
+		$(window).scroll(function () { 
+			for(var i = 0; i < 5; i++)
+				if(window.pageYOffset > heights[i] - 200)
+					setNavColors(i+2);
+			if(window.pageYOffset < heights[0] - 200)
+				setNavColors(1);
+	    });
 	  });
-
-	  function scroll(scrollToId)	{
-			var p = $("#" + scrollToId);
-			scrollTo = p.position().top;
-			$('html,body').animate({scrollTop: scrollTo}, 600);	
-		}
 	</script>
 	
 	<!--[if lt IE 9]>
@@ -59,13 +91,14 @@
 
 </head>
 <body>
-	<div class="pagepeel"></div>
+	
 	<div class="container main-nav">
-		<a href="#home" onclick="scroll('home')">home</a> 
-		<a href="#about-us" onclick="scroll('about-us')">about us</a> 
-		<a href="#services" onclick="scroll('services')">services</a> 
-		<a href="#work" onclick="scroll('work')">work</a> 
-		<a href="#careers" onclick="scroll('careers')">careers</a>
+		<a href="#home" onclick="scroll('home', 1)">home</a> 
+		<a href="#about-us" onclick="scroll('about-us', 2)">about us</a> 
+		<a href="#services" onclick="scroll('services', 3)">services</a> 
+		<a href="#work" onclick="scroll('work', 4)">work</a> 
+		<a href="#careers" onclick="scroll('careers', 5)">careers</a>
+		<a href="#"  data-reveal-id="request-quote">request a quote</a>
 	</div>
 
 	<!-- HOME CONTENT -->
@@ -88,8 +121,8 @@
 				<p>You can <a href="mailto:shakun@dizuna.com">email</a> us at any time or fill out this form and we’ll get back to you as soon as possible.</p>
 			</div>
 			<div class="four columns">
-				<h3>request a quote</h3>
-				<p>You can use this <a href="">form to request a quote</a> for your project. Just fill out the basic details, and we’ll tailor out a perfect solution for you.</p>
+				<h3><a href="#" data-reveal-id="request-quote">request a quote</a></h3>
+				<p>You can use this <a href="#" data-reveal-id="request-quote">form to request a quote</a> for your project. Just fill out the basic details, and we’ll tailor out a perfect solution for you.</p>
 			</div>
 		</div>
 
@@ -185,6 +218,28 @@
 		<div class="row centered">
 			<div class="twelve columns"><h2><span>Careers</span></h2></div>
 		</div>
+	</div>
+
+	
+	<div id="request-quote" class="reveal-modal container">
+	     <h3>Request a Quote</h3>
+	     <h2>&nbsp;</h2>
+	     <form class="nice">
+	     	<div class="row">
+	     		<div class="six columns">
+	     			<input type="text" placeholder="Name" class="input-text" />
+	     		</div>
+	     		<div class="six columns">
+	     			<input type="text" placeholder="E-Mail" class="input-text" />
+	     		</div>
+	     	</div>
+			<textarea placeholder="Project Description"></textarea>
+
+			<input type="submit" value="Submit" class="nice button" />
+	     </form>
+	</div>
+	<div id="ds-credit">
+		<a href="http://www.designserif.com/" target='_blank'>Designed by DesignSerif</a>
 	</div>
 </body>
 </html>

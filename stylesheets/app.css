@@ -2,6 +2,10 @@
     font-family: coolvetica;
     src: url(../assets/coolvetica.ttf);
 }
+@font-face {
+    font-family: myriad;
+    src: url(../assets/myriad.ttf);
+}
 
 /*	common	*/
 h2	{
@@ -92,4 +96,45 @@ h2 span 	{
 	border: 1px solid #FFF;
 	margin: 5px;
 	border-radius: 10px;
+}
+
+/*	Request a Quote */
+#request-quote-button	{
+	z-index: 4;
+	position: fixed;
+	top: 100px;
+	right: 0;
+}
+
+#request-quote-button a{
+	background: url('../images/request-quote.png') no-repeat;
+	background-position: 0px 0px;
+	width: 213px;
+	height: 81px;
+	display: block;
+}
+
+#request-quote-button a:hover	{
+	background-position: 0px -81px;
+}
+
+/*	DS Credit	*/
+#ds-credit	{
+	z-index: 4;
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+}
+
+#ds-credit a 	{
+	background: url('../images/ds-credit.png') no-repeat;
+	background-position: 65px 0px;
+	width: 108px;
+	height: 39px;
+	display: block;
+	text-indent: -50000px;
+}
+
+#ds-credit a:hover	{
+	background-position: 0px -39px;
 }
